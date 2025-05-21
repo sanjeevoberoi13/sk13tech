@@ -1,0 +1,242 @@
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sk13 Tech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet"/>
+   <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        transition: .5s ease-in-out;
+      }
+      .font-logo {
+        font-family: "Fredoka One", cursive;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      #fullPostView article {
+        pointer-events: none; /* disables nested click triggering */
+      }
+      #button-1{
+          background: red;
+          padding: 7px 15px;
+          color: white;
+          outline: none;
+          border-radius: 10px;
+      }
+     .backdrop-blur-10 {
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(10px); /* for Safari */
+      }
+      .article{
+          padding-bottom: 100px;
+      }
+    </style>
+  </head>
+  <body class="bg-white dark:text-black dark:text-white">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-[999] bg-white dark:bg-gray flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-200">
+         <button aria-label="Menu" onclick="toggleSidebar()" class="text-2xl text-black">
+           <i class="fas fa-bars"></i>
+         </button>
+         <h1 class="font-logo text-black text-xl select-none">Sk13 Tech</h1>
+         <img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinBE9mKxjXAhdOAkexKEkOt7wVov0wEPOKg&s" />
+    </header>
+
+    <!-- Sliding Sidebar -->
+    <div id="sidebar" class="fixed backdrop-blur-10 inset-0 bg-black bg-opacity-50 z-[1000] hidden">
+      <div class="flex justify-between items-center">
+          <h2 class="font-bold text-lg dark:text-white">Menu</h2>
+          <button
+            onclick="toggleSidebar()"
+            class="text-xl text-gray-700 dark:text-white"
+          >
+            &times;
+          </button>
+        </div>
+        <hr class="border-gray-300 dark:border-gray-700" />
+        <ul class="space-y-3 text-gray-700 dark:text-gray-200">
+          <li><a href="#" class="block hover:underline">Home</a></li>
+          <li><a href="#" class="block hover:underline">Feeds</a></li>
+          <li><a href="#" class="block hover:underline">Reports</a></li>
+          <li><a href="#" class="block hover:underline">Profile</a></li>
+        </ul>
+
+        <!-- Dark Mode Toggle -->
+        <div class="pt-6">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="darkModeToggle" class="hidden" onchange="toggleDarkMode()"/>
+            <div class="w-10 h-5 flex items-center bg-gray-300 dark:bg-gray-600 rounded-full p-1">
+              <div class="bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ease-in-out" id="toggleBall"></div>
+            </div>
+            <span class="text-sm" onclick="document.documentElement.classList.toggle('dark')">Dark Mode</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky Search Bar -->
+    <div class="sticky top-[66px] text-black z-10 bg-white px-5 py-2 border-b border-gray-200">
+      <input type="search" name="Search" id="Search" placeholder="Search here..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
+    </div>
+    
+    <!-- Page Title & Filter -->
+    <section class="px-10 flex items-center justify-between py-3 bg-white sticky top-[125px] z-10 border-b border-gray-100">
+      <h2 class="font-semibold text-black text-sm select-none flex items-center gap-1">Latest Posts <span class="text-yellow-400">⚡</span></h2>
+      <button class="bg-gray-800 text-white text-xs rounded-full py-1.5 px-3 flex items-center gap-1"><i class="fas fa-filter"></i> Sort</button>
+    </section>
+    
+    <!-- Main Article Caintainer -->
+    <main class="article px-4 py-4">
+        <div id="article-list" class="space-y-4">
+            
+            
+            
+            
+        </div>
+    </main>
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-between items-center px-8 py-3 rounded-b-3xl max-w-md mx-auto">
+      <button class="flex flex-col items-center text-gray-900 text-xs gap-1"><i class="fas fa-home text-lg"></i>Home</button>
+      <button class="flex flex-col items-center text-gray-900 text-xs gap-1 font-semibold"><i class="fas fa-leaf text-lg"></i>Feeds</button>
+      <button class="flex flex-col items-center text-gray-900 text-xs gap-1"><i class="fas fa-flag text-lg"></i>Reports</button>
+      <button class="flex flex-col items-center text-gray-900 text-xs gap-1"><i class="fas fa-user text-lg"></i>Profile</button>
+    </nav>
+   </body>
+  
+  <!-- scripts -->
+  <script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    
+    // If drawer doesn't exist, create it inside sidebar
+    let drawer = document.getElementById('drawer');
+    if (!drawer) {
+      const content = sidebar.innerHTML;
+      sidebar.innerHTML = '';
+
+      const overlayClick = document.createElement('div');
+      overlayClick.className = 'absolute inset-0 z-[1000]';
+      overlayClick.onclick = toggleSidebar;
+      sidebar.appendChild(overlayClick);
+
+      drawer = document.createElement('div');
+      drawer.id = 'drawer';
+      drawer.className = "absolute top-0 left-0 w-64 h-full bg-white dark:bg-gray-900 z-[1000] p-5 space-y-4 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out";
+      drawer.innerHTML = content;
+      sidebar.appendChild(drawer);
+    }
+
+    if (sidebar.classList.contains('hidden')) {
+      sidebar.classList.remove('hidden');
+      setTimeout(() => {
+        drawer.classList.remove('-translate-x-full');
+      }, 10);
+    } else {
+      drawer.classList.add('-translate-x-full');
+      setTimeout(() => {
+        sidebar.classList.add('hidden');
+      }, 300);
+    }
+  }
+</script>
+  <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+  import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyDZFMVoRFBmV07IN4BK4fPbWrI8eC_lAA8",
+    authDomain: "chat-ui-482d3.firebaseapp.com",
+    projectId: "chat-ui-482d3",
+    storageBucket: "chat-ui-482d3.appspot.com",
+    messagingSenderId: "878416166620",
+    appId: "1:878416166620:web:cbf63e246a5fbd32e9be19",
+    measurementId: "G-VH848NZLDW"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const articleList = document.getElementById("article-list"); // your container div
+
+  async function fetchArticles() {
+    const querySnapshot = await getDocs(collection(db, "articles"));
+    if (querySnapshot.empty) {
+      articleList.innerHTML = `<p class="text-gray-500">No articles found.</p>`;
+      return;
+    }
+
+    querySnapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      const title = data.title || "No Title";
+      const body = data.body || "";
+
+      // Get first image from body (if any)
+      const firstImgMatch = body.match(/<img[^>]+src="([^">]+)"/);
+      const thumbnail = firstImgMatch ? firstImgMatch[1] : "https://via.placeholder.com/90";
+
+      const articleCard = document.createElement("article");
+      articleCard.className = "flex justify-between bg-gray-100 rounded-xl p-3 gap-3 cursor-pointer";
+      articleCard.setAttribute("onclick", "openFullPost(this)");
+      articleCard.dataset.id = docSnap.id;
+
+      articleCard.innerHTML = `
+        <div class=" flex flex-col justify-between max-w-[65%]">
+          <p class="text-xs text-gray-400 select-none">Sk13 tech</p>
+          <p class="font-semibold text-black text-sm leading-snug line-clamp-3">${title}</p>
+          <div class="flex items-center gap-2 text-xs text-gray-500">
+            <img class="w-5 h-5 rounded-full object-cover" src="https://storage.googleapis.com/a1aa/image/2caee3bc-00c2-4f33-af9b-2f606e29aedf.jpg" />
+            <span>By Sk13 Tech</span>
+            <span class="flex items-center gap-1"><i class="far fa-eye"></i>${data.views || 0}</span>
+            <span class="flex items-center gap-1"><i class="far fa-comment"></i>0</span>
+          </div>
+        </div>
+        <div class="relative rounded-xl overflow-hidden w-[90px] h-[90px] flex-shrink-0">
+          <img class="w-full h-full object-cover" src="${thumbnail}" />
+        </div>
+      `;
+
+      articleList.appendChild(articleCard);
+    });
+  }
+
+  // Preview popup
+  window.openFullPost = async function (element) {
+    const id = element.dataset.id;
+    const docRef = doc(db, "articles", id);
+    const docSnap = await getDoc(docRef);
+    
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      const title = data.title || "Untitled";
+      const body = data.body || "";
+
+      const overlay = document.createElement("div");
+      overlay.className = "fixed inset-0 flex items-center justify-center z-50";
+      overlay.innerHTML = `
+       <div class="bg-white text-gray-900 max-w-3xl w-full p-6 rounded-lg overflow-y-auto max-h-[77vh] min-h-[77vh] relative">
+          <button onclick="this.parentElement.parentElement.remove()" class="absolute top-2 left-5 bg-gray-0 text-black px-3 py-1 rounded"><i class="fas fa-chevron-circle-left"></i> Back</button>
+          <h2 class="pt-5 text-2xl font-bold mb-4">${title}</h2>
+          <div class="prose max-w-full" id="fullPostBody">${body}</div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+     
+      overlay.querySelectorAll("#fullPostBody img").forEach(img => {
+        img.classList.add("rounded-xl"); // You can use rounded, rounded-md, etc.
+       });
+    } else {
+      alert("Article not found.");
+    }
+  };
+
+  fetchArticles();
+
+  </script>
+  </html>
