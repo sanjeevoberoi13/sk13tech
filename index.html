@@ -8,13 +8,265 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet"/>
    <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
     <style>
-      body {
-        font-family: "Inter", sans-serif;
-        transition: .5s ease-in-out;
-      }
-      .font-logo {
-        font-family: "Fredoka One", cursive;
-      }
+        
+:root{
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --border-end: #929292;
+    --nav-bottom: #ffffffa2;
+    --nav-color: #ffffff;
+    --card: #e8e8e8;
+    --primary-color: #ffb200;
+}
+.dark{
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --border-end: #515151;
+    --nav-bottom: #1f1f1fa2;
+    --nav-color: #00042b;
+    --card: #383838;
+    --primary-color: #c28800;
+}
+
+body {
+ user-select: none;
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ font-family: "Inter", sans-serif;
+ transition: .5s ease-in-out;
+ background-color: var(--background-color);
+ color: var(--text-color);
+}
+      
+.custom-header {
+  font-family: "Fredoka One", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1.25rem; 
+  padding-right: 1.25rem;
+  padding-top: 1.25rem;  
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-end);
+}
+
+.menu-button {
+  font-size: 1.5rem; /* text-2xl */
+  color: var(--text-color);
+}
+.logo-heading {
+  font-size: 1.25rem; /* text-xl = 20px */
+  user-select: none;
+}
+.avatar-image {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);  
+  z-index: 1000;
+}
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: ; <!-- remove -->
+  colour: var(--text-color);
+}
+.menu-title {
+  font-weight: 700;        
+  font-size: 1.125rem;    
+  color: var(--text-color);     
+}
+.text-xl-gray {
+  font-size: 1.25rem;      
+  color: #4a5568;         
+}
+.hr-custom {
+  border-color: #D1D5DB;
+}
+.ul-custom {
+  color: var(--text-color);
+  background: ;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ul-custom > * + * {
+  margin-top: 0.75rem;
+}
+.nav-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+.darkmode-caintainer{
+    padding-top: 1.5rem;
+}
+.custom-label {
+  display: flex;              
+  align-items: center;        
+  gap: 0.5rem;               
+  cursor: pointer;         
+}
+.custom-toggle-container {
+  width: 2.5rem;               
+  height: 1.25rem;             
+  display: flex;             
+  align-items: center;      
+  background-color: #d1d5db; 
+  border-radius: 9999px;      
+  padding: 0.25rem;          
+}
+.toggle-ball {
+  background-color: #ffffff;  
+  width: 1rem;                
+  height: 1rem;               
+  border-radius: 9999px;       
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);  
+  transform: translateX(0);    
+  transition: transform 0.3s ease-in-out; 
+}
+.sticky-header {
+  position: sticky;
+  top: 64px;
+  color: var(--text-color);
+  z-index: 10;
+  background-color: var(--background-color);
+  padding-left: 1.25rem;  /* 20px */
+  padding-right: 1.25rem;
+  padding-top: 0.5rem;    /* 8px */
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-end); /* light gray */
+}
+.search-input {
+  width: 100%;
+  padding-left: 1rem;    /* 16px */
+  padding-right: 1rem;
+  padding-top: 0.5rem;   /* 8px */
+  padding-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 2rem; /* 8px */
+  outline: none;
+  color: var(--text-color);
+  background: #7b7b7b33;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 2px #f59e0b; /* yellow-400 ring effect */
+  border-color: #f59e0b;
+}
+.sticky-section {
+  padding-left: 2.5rem; 
+  padding-right: 2.5rem;
+  padding-top: 0.75rem; 
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  position: sticky;
+  top: 122px;
+  z-index: 10;
+  border-bottom: 1px solid var(--border-end); 
+}
+.custom-h2 {
+  font-weight: 600; 
+  font-size: 0.875rem;  
+  user-select: none;    
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;    
+}
+.article{
+  padding-bottom: 100px;
+  padding-left: 1rem;    
+  padding-right: 1rem; 
+  padding-bottom: 5.25rem;
+  padding-top: 1rem;
+}
+.loading {
+  text-align: center;
+  padding-top: 1rem;      
+  padding-bottom: 1rem;
+  color: #6B7280;         
+  display: none;         
+}
+.navbottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(30px);
+  background: var(--nav-bottom);
+  border-top: 1px solid var(--border-end);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  border-bottom-left-radius: 1.5rem; 
+  border-bottom-right-radius: 1.5rem;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  z-index: 900; 
+}
+.Navbutton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  color: var(--text-color); /* text-gray-900 */
+  font-size: 0.75rem; /* text-xs */
+  gap: 0.25rem; /* gap-1 */
+}
+.overlayClick {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 900;
+}
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 43%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: conic-gradient(#ff003459 10%,#474bff);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 100px),#000 0);
+  animation: spinner-zp9dbg 1s infinite linear;
+}
+@keyframes spinner-zp9dbg {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.font-logo {
+  font-family: "Fredoka One", cursive;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+    
       html {
         scroll-behavior: smooth;
       }
@@ -32,101 +284,178 @@
           backdrop-filter: blur(4px);
           -webkit-backdrop-filter: blur(10px); /* for Safari */
       }
-      .article{
-          padding-bottom: 100px;
-      }
+ .title{
+     color: var(--text-color);
+ }
+ 
+ .articleview{
+     padding: 80px 20px;
+ }
+.profile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  height: 45%;
+  max-width: 400px;
+  text-align: left;
+  color: var(--text-color);
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--accent-color);
+}
+ .cardblur{
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: 899;
+ backdrop-filter: blur(20px);
+ background: #00000030;
+ width: 100vw;
+ height: 100vh;
+ }
+ .activeBottom{
+     color: #ffc700;
+ }
     </style>
   </head>
-  <body class="bg-white dark:text-black dark:text-white">
+      <body>
     <!-- Sticky Header -->
-    <header class="sticky top-0 z-[999] bg-white dark:bg-gray flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-200">
-         <button aria-label="Menu" onclick="toggleSidebar()" class="text-2xl text-black">
+    <header class="custom-header">
+         <button aria-label="Menu" onclick="toggleSidebar()" class="menu-button">
            <i class="fas fa-bars"></i>
          </button>
-         <h1 class="font-logo text-black text-xl select-none">Sk13 Tech</h1>
-         <img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinBE9mKxjXAhdOAkexKEkOt7wVov0wEPOKg&s" />
+         <h1 class="font-logo logo-heading">Sk13 Tech</h1>
+         <img alt="User profile avatar" class=" avatar-image shared-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinBE9mKxjXAhdOAkexKEkOt7wVov0wEPOKg&s"/>
     </header>
-
+    
     <!-- Sliding Sidebar -->
-    <div id="sidebar" class="fixed backdrop-blur-10 inset-0 bg-black bg-opacity-50 z-[1000] hidden">
-      <div class="flex justify-between items-center">
-          <h2 class="font-bold text-lg dark:text-white">Menu</h2>
-          <button
-            onclick="toggleSidebar()"
-            class="text-xl text-gray-700 dark:text-white"
-          >
-            &times;
-          </button>
-        </div>
-        <hr class="border-gray-300 dark:border-gray-700" />
-        <ul class="space-y-3 text-gray-700 dark:text-gray-200">
-          <li><a href="#" class="block hover:underline">Home</a></li>
-          <li><a href="#" class="block hover:underline">Feeds</a></li>
-          <li><a href="#" class="block hover:underline">Reports</a></li>
-          <li><a href="#" class="block hover:underline">Profile</a></li>
-        </ul>
+    <div id="sidebar" class="sidebar-overlay hidden">
+           <div class="header-flex">
+           <h2 class="menu-title">Menu</h2>
+           <button onclick="toggleSidebar()" class="text-xl-gray"><i class="fas fa-times"></i></button>
+           </div>
+           <hr class="hr-custom" />
+           <ul class="ul-custom">
+           <li><a href="#" class="nav-link">Home</a></li>
+           <li><a href="#" class="nav-link">Feeds</a></li>
+           <li><a href="#" class="nav-link">Reports</a></li>
+           <li class="nav-link" onclick="toggleProfile()">Profile</li>
+           </ul>
 
         <!-- Dark Mode Toggle -->
-        <div class="pt-6">
-          <label class="flex items-center gap-2 cursor-pointer">
+            <div class="darkmode-caintainer">
+            <label class="custom-label">
             <input type="checkbox" id="darkModeToggle" class="hidden" onchange="toggleDarkMode()"/>
-            <div class="w-10 h-5 flex items-center bg-gray-300 dark:bg-gray-600 rounded-full p-1">
-              <div class="bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300 ease-in-out" id="toggleBall"></div>
+            <div class="custom-toggle-container">
+            <div id="toggleBall" class="toggle-ball"></div>
             </div>
             <span class="text-sm" onclick="document.documentElement.classList.toggle('dark')">Dark Mode</span>
-          </label>
-        </div>
+            </label>
+            </div>
       </div>
-    </div>
 
     <!-- Sticky Search Bar -->
-    <div class="sticky top-[66px] text-black z-10 bg-white px-5 py-2 border-b border-gray-200">
-      <input type="search" name="Search" id="Search" placeholder="Search here..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
+    <div class="sticky-header">
+      <input type="search" name="Search" id="Search" placeholder="Search here..." class="search-input"/>
     </div>
-    
     <!-- Page Title & Filter -->
-    <section class="px-10 flex items-center justify-between py-3 bg-white sticky top-[125px] z-10 border-b border-gray-100">
-      <h2 class="font-semibold text-black text-sm select-none flex items-center gap-1">Latest Posts <span class="text-yellow-400">⚡</span></h2>
-      <button class="bg-gray-800 text-white text-xs rounded-full py-1.5 px-3 flex items-center gap-1"><i class="fas fa-filter"></i> Sort</button>
+    <section class="sticky-section">
+      <h2 class="custom-h2">Latest Posts <span class="text-yellow-400">⚡</span></h2>
+      <a href="https://youtube.com/sk13tech">
+          <button class="bg-gray-800 text-white text-xs py-1.5 px-3 flex items-center gap-1 rounded-full"><i class="fab fa-youtube"></i>Subscribe on YouTube</button>
+      </a>
     </section>
-    
     <!-- Main Article Caintainer -->
-    <main class="article px-4 py-4">
+    <main class="article">
         <div id="article-list" class="space-y-4">
-            
-            
-            
-            
+          <div id="loading" class="loading">
+            <div class="spinner"></div>       
+          </div>
         </div>
     </main>
     <!-- Bottom Navigation -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-between items-center px-8 py-3 rounded-b-3xl max-w-md mx-auto">
-      <button class="flex flex-col items-center text-gray-900 text-xs gap-1"><i class="fas fa-home text-lg"></i>Home</button>
-      <button class="flex flex-col items-center text-gray-900 text-xs gap-1 font-semibold"><i class="fas fa-leaf text-lg"></i>Feeds</button>
-      <button class="flex flex-col items-center text-gray-900 text-xs gap-1"><i class="fas fa-flag text-lg"></i>Reports</button>
-      <button class="flex flex-col items-center text-gray-900 text-xs gap-1"><i class="fas fa-user text-lg"></i>Profile</button>
+    <nav class="navbottom">
+      <button class="Navbutton hme" onclick="toggleProfile()"><i class="fas fa-home text-lg"></i>Home</button>
+      <button class="Navbutton fed" onclick="toggleProfile()"><i class="fas fa-leaf text-lg"></i>Feeds</button>
+      <button class="Navbutton rep" onclick="toggleProfile()"><i class="fas fa-flag text-lg"></i>Reports</button>
+      <button class="Navbutton pro" onclick="toggleProfile()"><i class="fas fa-user text-lg"></i>Profile</button>
     </nav>
+    
+    <!-- Prolfile Card -->
+   <div class="cardblur hidden"       
+   </div>
+    <div class="profile rounded-[40px] overflow-hidden max-w-xs w-full" style="background: ">
+   <img alt="" class="profile-img" height="auto" src="https://raw.githubusercontent.com/sanjeevoberoi13/sk13tech/refs/heads/main/Screenshot_2025-05-22-23-46-57-852_com.google.android.apps.photos.png" width="400"/>
+   <div class="absolute inset-0 bg-gradient-to-t from-[#2a2c2a] via-[#2a2c2a]/90 to-transparent rounded-[40px] p-6 flex flex-col justify-end text-white">
+    <div class="mb-4">
+     <h1 class="text-2xl font-semibold flex items-center gap-2">
+      Sanjeev Oberoi
+      <i aria-label="Verified checkmark" class="fas fa-check-circle text-white text-lg" style="filter: drop-shadow(0 0 1px #2a2c2a)">
+      </i>
+     </h1>
+     <p class="text-base font-normal mt-1 max-w-[90%]">
+      If You have an idea Execute it without thinking abouth failure.
+     </p>
+    </div>
+    <div class="flex items-center justify-between max-w-[90%]">
+     <div class="flex items-center gap-4 text-white text-sm font-normal">
+      <div class="flex items-center gap-1">
+       <i class="fas fa-user">
+       </i>
+       <span>
+        1489
+       </span>
+      </div>
+      <div class="flex items-center gap-1">
+       <i class="fas fa-clipboard-check">
+       </i>
+       <span>
+        48
+       </span>
+      </div>
+     </div>
+     <a href="https://instagram.com/ig_x_sanjeev.13">
+     <button aria-label="Follow sanjeev oberoi" class="bg-white text-black rounded-full px-4 py-2 font-semibold flex items-center gap-2 shadow-md hover:brightness-95 transition">
+     <i class="fab fa-instagram">
+      Follow
+      </i>
+     </button></a>
+    </div>
+   </div>
+  </div>
+</div>
+    
    </body>
-  
+   
   <!-- scripts -->
   <script>
   function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     
-    // If drawer doesn't exist, create it inside sidebar
     let drawer = document.getElementById('drawer');
     if (!drawer) {
       const content = sidebar.innerHTML;
       sidebar.innerHTML = '';
 
       const overlayClick = document.createElement('div');
-      overlayClick.className = 'absolute inset-0 z-[1000]';
+      overlayClick.className = 'overlayClick';
       overlayClick.onclick = toggleSidebar;
       sidebar.appendChild(overlayClick);
 
       drawer = document.createElement('div');
       drawer.id = 'drawer';
-      drawer.className = "absolute top-0 left-0 w-64 h-full bg-white dark:bg-gray-900 z-[1000] p-5 space-y-4 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out";
+      drawer.className = "absolute top-0 left-0 w-64 h-full bg-[var(--nav-color)] z-[1000] p-5 space-y-4 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out";
       drawer.innerHTML = content;
       sidebar.appendChild(drawer);
     }
@@ -143,12 +472,65 @@
       }, 300);
     }
   }
+
+  function toggleDarkMode() {
+    const isChecked = document.getElementById("darkModeToggle").checked;
+    document.documentElement.classList.toggle("dark", isChecked);
+    localStorage.setItem("darkMode", isChecked ? "enabled" : "disabled");
+  }
+
+  // On page load, apply the saved theme
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedMode = localStorage.getItem("darkMode");
+    const toggle = document.getElementById("darkModeToggle");
+
+    if (savedMode === "enabled") {
+      document.documentElement.classList.add("dark");
+      if (toggle) toggle.checked = true;
+    } else {
+      document.documentElement.classList.remove("dark");
+      if (toggle) toggle.checked = false;
+    }
+  });
+  
+  <!-- prevent user select  -->
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.ctrlKey && ['s', 'u', 'c', 'x', 'v'].includes(e.key.toLowerCase()) || 
+      e.key === 'F12'
+    ) {
+      e.preventDefault();
+    }
+  });
+  
+  <!-- toggle pr-->
+
+  function toggleProfile() {
+    const profileCard = document.querySelector('.cardblur');
+    
+    if (profileCard.classList.contains('hidden')) {
+      // Show the card
+      profileCard.classList.remove('hidden');
+    } else {
+      // Hide the card
+      profileCard.classList.add('hidden');
+    }
+  }
+
 </script>
   <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
-  import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    doc,
+    getDoc,
+    query,
+    limit
+  } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
 
-  // Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyDZFMVoRFBmV07IN4BK4fPbWrI8eC_lAA8",
     authDomain: "chat-ui-482d3.firebaseapp.com",
@@ -159,14 +541,23 @@
     measurementId: "G-VH848NZLDW"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  const articleList = document.getElementById("article-list"); // your container div
+  const articleList = document.getElementById("article-list");
+  const loading = document.getElementById("loading");
+  const searchInput = document.getElementById("Search");
+
+  let allArticles = []; // To store all fetched articles for search filtering
 
   async function fetchArticles() {
-    const querySnapshot = await getDocs(collection(db, "articles"));
+    loading.style.display = "block";
+    const q = query(collection(db, "articles"), limit(10));
+    const querySnapshot = await getDocs(q);
+    loading.style.display = "none";
+
+    allArticles = [];
+
     if (querySnapshot.empty) {
       articleList.innerHTML = `<p class="text-gray-500">No articles found.</p>`;
       return;
@@ -176,42 +567,67 @@
       const data = docSnap.data();
       const title = data.title || "No Title";
       const body = data.body || "";
-
-      // Get first image from body (if any)
       const firstImgMatch = body.match(/<img[^>]+src="([^">]+)"/);
       const thumbnail = firstImgMatch ? firstImgMatch[1] : "https://via.placeholder.com/90";
 
+      const article = {
+        id: docSnap.id,
+        title,
+        body,
+        views: data.views || 0,
+        thumbnail
+      };
+
+      allArticles.push(article);
+    });
+
+    renderArticles(allArticles);
+  }
+
+  function renderArticles(articles) {
+    articleList.innerHTML = "";
+    if (articles.length === 0) {
+      articleList.innerHTML = `<p class="text-gray-500" >No matching articles.</p>`;
+      return;
+    }
+
+    articles.forEach((article) => {
       const articleCard = document.createElement("article");
-      articleCard.className = "flex justify-between bg-gray-100 rounded-xl p-3 gap-3 cursor-pointer";
+      articleCard.className = "bg-[var(--card)] shadow flex justify-between rounded-xl p-3 gap-3 cursor-pointer";
       articleCard.setAttribute("onclick", "openFullPost(this)");
-      articleCard.dataset.id = docSnap.id;
+      articleCard.dataset.id = article.id;
 
       articleCard.innerHTML = `
         <div class=" flex flex-col justify-between max-w-[65%]">
-          <p class="text-xs text-gray-400 select-none">Sk13 tech</p>
-          <p class="font-semibold text-black text-sm leading-snug line-clamp-3">${title}</p>
+          <p class="text-xs text-gray-400 select-none">Sk13 tech <i class="fas fa-check-circle" style="color: #0081ff;"></i></p>
+          <p class="title font-semibold text-sm leading-snug line-clamp-3">${article.title}</p>
           <div class="flex items-center gap-2 text-xs text-gray-500">
-            <img class="w-5 h-5 rounded-full object-cover" src="https://storage.googleapis.com/a1aa/image/2caee3bc-00c2-4f33-af9b-2f606e29aedf.jpg" />
+            <img class="w-5 h-5 rounded-full object-cover shared-img" src="https://via.placeholder.com/40"/>
             <span>By Sk13 Tech</span>
-            <span class="flex items-center gap-1"><i class="far fa-eye"></i>${data.views || 0}</span>
-            <span class="flex items-center gap-1"><i class="far fa-comment"></i>0</span>
+            <span class="flex items-center gap-1"><i class="far fa-yeye"></i></span>
+            <span class="flex items-center gap-1"><i class="far fa-ciomment"></i></span>
           </div>
         </div>
         <div class="relative rounded-xl overflow-hidden w-[90px] h-[90px] flex-shrink-0">
-          <img class="w-full h-full object-cover" src="${thumbnail}" />
+          <img class="w-full h-full object-cover" src="${article.thumbnail}" />
         </div>
       `;
 
       articleList.appendChild(articleCard);
     });
+
+    // Update shared avatars
+    const imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinBE9mKxjXAhdOAkexKEkOt7wVov0wEPOKg&s";
+    document.querySelectorAll('.shared-img').forEach(img => {
+      img.src = imageURL;
+    });
   }
 
-  // Preview popup
   window.openFullPost = async function (element) {
     const id = element.dataset.id;
     const docRef = doc(db, "articles", id);
     const docSnap = await getDoc(docRef);
-    
+
     if (docSnap.exists()) {
       const data = docSnap.data();
       const title = data.title || "Untitled";
@@ -220,23 +636,31 @@
       const overlay = document.createElement("div");
       overlay.className = "fixed inset-0 flex items-center justify-center z-50";
       overlay.innerHTML = `
-       <div class="bg-white text-gray-900 max-w-3xl w-full p-6 rounded-lg overflow-y-auto max-h-[77vh] min-h-[77vh] relative">
-          <button onclick="this.parentElement.parentElement.remove()" class="absolute top-2 left-5 bg-gray-0 text-black px-3 py-1 rounded"><i class="fas fa-chevron-circle-left"></i> Back</button>
-          <h2 class="pt-5 text-2xl font-bold mb-4">${title}</h2>
+        <div class="articleview bg-[var(--background-color)] text-[var(--text-color)] max-w-3xl w-full overflow-y-auto max-h-[100vh] min-h-[100vh] relative">
+          <button onclick="this.parentElement.parentElement.remove()" class="relative bg-gray-0 text-[var(--primary-color)]  rounded"><i class="fas fa-chevron-circle-left"></i> Back</button>
+          <h2 class="text-2xl font-bold mb-4">${title}</h2>
           <div class="prose max-w-full" id="fullPostBody">${body}</div>
         </div>
       `;
       document.body.appendChild(overlay);
-     
+
       overlay.querySelectorAll("#fullPostBody img").forEach(img => {
-        img.classList.add("rounded-xl"); // You can use rounded, rounded-md, etc.
-       });
+        img.classList.add("rounded-xl");
+      });
     } else {
       alert("Article not found.");
     }
   };
 
-  fetchArticles();
+  // Search listener
+  searchInput.addEventListener("input", () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+    const filtered = allArticles.filter(article =>
+      article.title.toLowerCase().includes(keyword)
+    );
+    renderArticles(filtered);
+  });
 
-  </script>
-  </html>
+  fetchArticles();
+</script>
+</html>
